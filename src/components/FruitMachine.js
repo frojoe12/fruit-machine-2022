@@ -13,8 +13,19 @@ const FruitMachine = () => {
     const [wheelsEnd, setWheelsEnd] = useState([50,50,50,50,50])
     const [winAnim, setWinAnim] = useState(false)
 
+    const overallSizeSelector = 0
+    const overallSize = [
+        {ratio:20,height:500,size:100,offset:2},
+        {ratio:33.3333333,height:330,size:110,offset:1}]
+    // eg 20,500,100,2
+    const [wheelRatio, setWheelRatio] = useState(overallSize[overallSizeSelector].ratio)
+    const [wheelHeight, setWheelHeight] = useState(overallSize[overallSizeSelector].height)
+    const [wheelSize, setWheelSize] = useState(overallSize[overallSizeSelector].size)
+    const [winPositionOffset, setWinPositionOffset] = useState(overallSize[overallSizeSelector].offset)
+
+
     const getWheelPosition = (position) => {
-        return (-position * 33.333333);
+        return (-position * wheelRatio);
     }
     const randomNumber = (num1,num2) => {
         return (num1 + (Math.floor(Math.random() * num2)))
@@ -71,7 +82,7 @@ const FruitMachine = () => {
 
     const checkForWin = (reelNumbers, startCredits) => {
         const reels = reelNumbers.map((reelNumber,index) => (
-            fruitWheels[index].fruit[reelNumber+1]  
+            fruitWheels[index].fruit[reelNumber+winPositionOffset]  
         ))
         // console.log(reels)
         setCredits(startCredits+wheelCombinations(reels))
@@ -168,7 +179,7 @@ const FruitMachine = () => {
 
     return (
         <Wrapper>
-            <FruitMachineContainer>
+            <FruitMachineContainer wheelHeight={wheelHeight}>
                 {
                     fruitWheels.map(wheel => (
                         <FruitWheel 
@@ -177,7 +188,10 @@ const FruitMachine = () => {
                         wheelMovementEnd={getWheelPosition(wheelsEnd[wheel.wheelNo])}
                         wheelMove={spinWheels}
                         wheelSpeed={wheel.speed}
-                        fruitWheel={wheel.fruit} />
+                        fruitWheel={wheel.fruit} 
+                        wheelRatio={wheelRatio}
+                        wheelSize={wheelSize}
+                        />
                     ))
                 }
             </FruitMachineContainer>

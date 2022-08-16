@@ -31,18 +31,18 @@ const winAnimate = () => keyframes`
     }
 `
 
-export const Wrapper = styled.div` transform-origin:0% 0%;margin:0 0 50px 0; user-select:none; transform:scale(1);position:relative;`
+export const Wrapper = styled.div` transform-origin:0% 0%; margin:0 0 0 0; user-select:none; transform:scale(1);position:relative;`
 
 export const FruitMachineContainer = styled.div`
     box-sizing:border-box;
-    margin:15px 0;
+    margin:0 0;
     padding:0 15px;
     display:flex;
     justify-content:space-around;
-    height:330px;
+    height:${props => props.wheelHeight}px;
     max-width:600px;
     min-width:600px;
-    max-height:330px;
+    max-height:${props => props.wheelHeight}px;
     overflow:hidden;
     background:#eee;
     postition:absolute;
@@ -58,7 +58,7 @@ const winAnimateWrapper = () => css`
 
 export const WheelOuter = styled.div`
     background:white;
-    width:110px;
+    width:${props=> props.wheelSize}px;
     ${props => props.wheelMove ? wheelAnimateWrapper(props) : `animation:none; transform:translate(0,${props.wheelMovementStart}%);`}
     
 `
