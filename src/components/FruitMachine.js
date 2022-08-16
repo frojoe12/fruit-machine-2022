@@ -1,5 +1,5 @@
 import FruitWheel from "./FruitWheel"
-import {Credits, CreditsText, FruitMachineContainer, SpinButton, Wrapper} from "../styles/fruitMachineStyle.js"
+import {Credits, CreditsText, FruitMachineContainer, SpinButton, Wrapper, ReelsOverlay, WinLine} from "../styles/fruitMachineStyle.js"
 
 import {useState} from "react"
 
@@ -17,7 +17,6 @@ const FruitMachine = () => {
     const overallSize = [
         {ratio:20,height:500,size:100,offset:2},
         {ratio:33.3333333,height:330,size:110,offset:1}]
-    // eg 20,500,100,2
     const [wheelRatio, setWheelRatio] = useState(overallSize[overallSizeSelector].ratio)
     const [wheelHeight, setWheelHeight] = useState(overallSize[overallSizeSelector].height)
     const [wheelSize, setWheelSize] = useState(overallSize[overallSizeSelector].size)
@@ -194,6 +193,8 @@ const FruitMachine = () => {
                         />
                     ))
                 }
+                <ReelsOverlay />
+                <WinLine />
             </FruitMachineContainer>
             <SpinButton
                 onClick={spinWheelsButton}

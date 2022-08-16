@@ -45,7 +45,26 @@ export const FruitMachineContainer = styled.div`
     max-height:${props => props.wheelHeight}px;
     overflow:hidden;
     background:#eee;
-    postition:absolute;
+    position:relative;
+`
+export const ReelsOverlay = styled.div`
+    z-index:2;
+    position:absolute;
+    background:linear-gradient(0deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0) 65%, rgba(0,0,0,0.15) 100%);
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+`
+export const WinLine = styled.div`
+    z-index:2;
+    position:absolute;
+    left:0;
+    top:40%;
+    right:0;
+    bottom:40%;
+    border-top:2px solid rgba(0,0,0,.05);
+    border-bottom:2px solid rgba(0,0,0,.05);
 `
 
 const wheelAnimateWrapper = ({wheelMovementStart, wheelMovementEnd, wheelSpeed}) => css`
@@ -60,7 +79,8 @@ export const WheelOuter = styled.div`
     background:white;
     width:${props=> props.wheelSize}px;
     ${props => props.wheelMove ? wheelAnimateWrapper(props) : `animation:none; transform:translate(0,${props.wheelMovementStart}%);`}
-    
+    position:relative;
+    z-index:1;
 `
 export const FruitPartWrapper = styled.div`
     width:100%;
