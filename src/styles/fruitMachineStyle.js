@@ -102,7 +102,7 @@ export const SpinButton = styled.button`
     border:none;
     background: ${props=>props.isActive ? `rgba(255,198,23,1)` : `rgba(255,198,23,.3)`};
     color:${props=>props.isActive ? `white` : `rgba(255,255,255,.5)`};
-    
+    font-family: 'DM Mono';
     font-size:20px;
     padding:20px 35px;
     max-width:200px;
@@ -114,7 +114,7 @@ export const SpinButton = styled.button`
 
 export const Credits = styled.div`
     padding:10px;
-    font-family:DMMono;
+    font-family: 'DM Mono';
     text-align:center;
     background:black;
     font-weight:bold;

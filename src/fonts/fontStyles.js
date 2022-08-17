@@ -1,17 +1,15 @@
 import { createGlobalStyle } from "styled-components"
 
-import DMMono from "./DMMono-Medium.ttf"
+import MonoFont from './SourceCodePro-Medium.ttf'
 
 const FontStyles = createGlobalStyle`
-    @font-face {
-        font-family: 'DMMono';
-        src: url(${DMMono}) format ('truetype');
-        font-weight:500;
-        font-style:normal;
-        font-display:auto;
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono&display=swap');
+    body {
+        font-family: 'DM Mono'
     }
     h1 {
-        font-family:'DMMono';
+        font-family:'DM Mono';
+        font-size:100px;
     }
 `
 
