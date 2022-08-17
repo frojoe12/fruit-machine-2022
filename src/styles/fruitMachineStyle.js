@@ -1,5 +1,6 @@
 import styled, { css, keyframes } from "styled-components"
 
+
 const wheelAnimate = ({wheelMovementStart, wheelMovementEnd}) => keyframes`
     0% {
         transform:translate(0,${wheelMovementStart}%);
@@ -89,33 +90,39 @@ export const FruitPartImg = styled.img`
     max-width:100%; 
     display:block;
 `
-
+export const ButtonsContainer = styled.div`
+    display:flex;
+    justify-content:center;
+    background:#333;
+    padding:20px;
+    border-top:3px solid black;
+    border-bottom:3px solid black;
+`
 export const SpinButton = styled.button`
     border:none;
-    background: ${props=>props.isActive ? `#5919d6` : `#ddd`};
-    color:white;
+    background: ${props=>props.isActive ? `rgba(255,198,23,1)` : `rgba(255,198,23,.3)`};
+    color:${props=>props.isActive ? `white` : `rgba(255,255,255,.5)`};
+    
     font-size:20px;
-    padding:10px 35px;
-    margin:20px 20px 5px 0;
+    padding:20px 35px;
+    max-width:200px;
     font-weight:bold;
     font-size:30px;
-    border-radius:5px;
-    max-width:600px;
-    min-width:600px;
+    border-radius:8px;
+
 `
 
 export const Credits = styled.div`
     padding:10px;
-    max-width:600px;
-    min-width:600px;
+    font-family:DMMono;
     text-align:center;
-    background:white;
-    border:1px solid #5919d6;
-    margin:5px 20px 5px 0;
-    font-size:30px;
-    color:#5919d6;
+    background:black;
+    font-weight:bold;
+    font-size:35px;
+    color:rgba(255,198,23,1);
 
 `
+
 
 export const CreditsText = styled.div`
     ${props=>props.winAnim ?  winAnimateWrapper() : `animation:none;`}
