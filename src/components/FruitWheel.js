@@ -1,3 +1,4 @@
+import React from "react"
 import FruitPart from "./FruitPart"
 import { WheelOuter } from "../styles/fruitMachineStyle"
 

@@ -1,7 +1,8 @@
-import FruitWheel from "./FruitWheel"
-import {ButtonsContainer, Credits, CreditsText, CreditsTextWhite, FruitMachineContainer, SpinButton, Wrapper, ReelsOverlay, WinLine} from "../styles/fruitMachineStyle.js"
+import React, {useState} from "react"
 
-import {useState} from "react"
+import FruitWheel from "./FruitWheel"
+import {ButtonsContainer, Credits, CreditsText, FruitMachineContainer, SpinButton, Wrapper, ReelsOverlay, WinLine} from "../styles/fruitMachineStyle.js"
+
 
 const fruitNames = ["cherry","lemon","orange","strawberry","grapes","melon",]
 

@@ -1,3 +1,4 @@
+import React from "react"
 import FruitMachine from "./components/FruitMachine"
 
 const style = { maxWidth:"600px", margin: "0 auto", backgroundColor:"#aaa" }

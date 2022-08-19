@@ -1,3 +1,4 @@
+import React from "react"
 import cherry from "../images/cherry.png"
 import lemon from "../images/lemon.png"
 import grapes from "../images/grapes.png"
