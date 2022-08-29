@@ -15,7 +15,7 @@ const FruitMachine = () => {
     const [wheelsEnd, setWheelsEnd] = useState([50,50,50,50,50])
     const [winAnim, setWinAnim] = useState(false)
     const [holdButtons,setHoldButtons] = useState(holdButtonData)
-    const [holdButtonsActive,setHoldButtonsActive] = useState(false)
+    const [holdButtonsActive,setHoldButtonsActive] = useState(true)
 
     const overallSizeSelector = 0
     const overallSize = [
@@ -64,18 +64,22 @@ const FruitMachine = () => {
         if ((mainReel===0 || mainReel===1) && wheelMatch>0) {
             winnings=1*wheelMatch
             setWinAnim(true)
+            resetButtonsOnWin()
         }
         else if ((mainReel===2 || mainReel===3) && wheelMatch>0) {
             winnings=2*wheelMatch
             setWinAnim(true)
+            resetButtonsOnWin()
         }
         else if ((mainReel===4) && wheelMatch>0) {
             winnings=4*wheelMatch
             setWinAnim(true)
+            resetButtonsOnWin()
         }
         else if ((mainReel===5) && wheelMatch>0) {
             winnings=5*wheelMatch
             setWinAnim(true)
+            resetButtonsOnWin()
         }
         console.log(mainReel)
         console.log(wheelMatch)
@@ -91,7 +95,25 @@ const FruitMachine = () => {
         setCredits(startCredits+wheelCombinations(reels))
     }
 
+    const holdButtonPushed = (id) => () => {
+        if (!holdButtonsActive) {return}
+        const buttons = holdButtons.map(button=>{
+            if (button.id === id) {
+                button.isPushed = !button.isPushed
+            }
+            return (button)
+        })
+        console.log(buttons)
+        setHoldButtons(buttons)
+    }
+
+    const resetButtonsOnWin = () => {
+        resetHoldButtons()
+    }
+
     const spinWheelsButton = () => {
+        // set the hold buttons to inactive if not pressed
+        // check the hold buttons array to see if any are pressed
         setWinAnim(false)
         if (!spinWheels) {
             const randArrayStart=[
@@ -117,9 +139,20 @@ const FruitMachine = () => {
             setTimeout(()=>{
                 setWheelsStart(randArrayEnd)
                 setSpinWheels(false)
-                setHoldButtonsActive(true)
+                const holdButtonsActivate = Math.floor(Math.random()*100)>50;
+                setHoldButtonsActive(holdButtonsActivate)
+                if (!holdButtonsActivate) {
+                    // reset all the hold buttons to isPushed:false
+                    resetHoldButtons(); 
+                }
             },4000)
         }
+    }
+
+    const resetHoldButtons = () => {
+        const buttons = holdButtons.map(button=>
+            {return {id:button.id,isPushed:false}})
+        setHoldButtons(buttons)   
     }
 
     const fruitWheels = [
@@ -209,7 +242,7 @@ const FruitMachine = () => {
             
             <ButtonsContainer>
             <HoldButtonContainer>
-                {holdButtons.map(holdButton=><HoldButton isActive={holdButtonsActive} isPushed={holdButton.isPushed} key={holdButton.id}>HOLD</HoldButton>)}
+                {holdButtons.map(holdButton=><HoldButton isActive={holdButtonsActive} isPushed={holdButton.isPushed} key={holdButton.id} onClick={holdButtonPushed(holdButton.id)}>HOLD</HoldButton>)}
             </HoldButtonContainer>
             <SpinButton
                 onClick={spinWheelsButton}

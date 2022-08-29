@@ -128,7 +128,7 @@ export const HoldButton = styled.button`
     border:none;
     background: ${props=>props.isActive ? `rgba(255,150,23,1)` : `rgba(255,198,23,.3)`};
     color:${props=>props.isActive ? `white` : `rgba(255,255,255,.2)`};
-    ${props=>props.isActive && !props.isPressed ?  buttonGlowWrapper() : `animation:none;`} 
+    ${props=>props.isActive && !props.isPushed ?  buttonGlowWrapper() : `animation:none;`} 
     font-family: 'DM Mono';
     padding:9px 10px;
     margin:0 9px;
