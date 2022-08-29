@@ -109,11 +109,34 @@ export const FruitPartImg = styled.img`
 `
 export const ButtonsContainer = styled.div`
     display:flex;
+    flex-direction:column;
     justify-content:center;
+    align-items:center;
     background:#333;
     padding:20px;
     border-top:3px solid black;
     border-bottom:3px solid black;
+`
+export const HoldButtonContainer = styled.div`
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+    padding-bottom:20px;
+`
+export const HoldButton = styled.button`
+    border:none;
+    background: ${props=>props.isActive ? `rgba(255,150,23,1)` : `rgba(255,198,23,.3)`};
+    color:${props=>props.isActive ? `white` : `rgba(255,255,255,.2)`};
+    ${props=>props.isActive && !props.isPressed ?  buttonGlowWrapper() : `animation:none;`} 
+    font-family: 'DM Mono';
+    padding:9px 10px;
+    margin:0 9px;
+    max-width:150px;
+    width:95px;
+    font-weight:bold;
+    font-size:20px;
+    border-radius:8px;
 `
 export const SpinButton = styled.button`
     border:none;
@@ -122,7 +145,7 @@ export const SpinButton = styled.button`
     ${props=>props.isActive ?  buttonGlowWrapper() : `animation:none;`} 
     font-family: 'DM Mono';
     font-size:20px;
-    padding:20px 35px;
+    padding:12px 35px;
     max-width:200px;
     font-weight:bold;
     font-size:30px;

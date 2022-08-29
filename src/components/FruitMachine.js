@@ -1,10 +1,11 @@
 import React, {useState} from "react"
 
 import FruitWheel from "./FruitWheel"
-import {ButtonsContainer, Credits, CreditsText, FruitMachineContainer, SpinButton, Wrapper, ReelsOverlay, WinLine} from "../styles/fruitMachineStyle.js"
+import {ButtonsContainer, Credits, CreditsText, FruitMachineContainer, SpinButton, Wrapper, ReelsOverlay, WinLine, HoldButtonContainer, HoldButton} from "../styles/fruitMachineStyle.js"
 
 
 const fruitNames = ["cherry","lemon","orange","strawberry","grapes","melon",]
+const holdButtonData = [{id:'hold1',isPushed:false,},{id:'hold2',isPushed:false},{id:'hold3',isPushed:false},{id:'hold4',isPushed:false},{id:'hold5',isPushed:false}]
 
 const FruitMachine = () => {
 
@@ -13,6 +14,8 @@ const FruitMachine = () => {
     const [wheelsStart, setWheelsStart] = useState([50,50,50,50,50])
     const [wheelsEnd, setWheelsEnd] = useState([50,50,50,50,50])
     const [winAnim, setWinAnim] = useState(false)
+    const [holdButtons,setHoldButtons] = useState(holdButtonData)
+    const [holdButtonsActive,setHoldButtonsActive] = useState(false)
 
     const overallSizeSelector = 0
     const overallSize = [
@@ -114,6 +117,7 @@ const FruitMachine = () => {
             setTimeout(()=>{
                 setWheelsStart(randArrayEnd)
                 setSpinWheels(false)
+                setHoldButtonsActive(true)
             },4000)
         }
     }
@@ -202,7 +206,11 @@ const FruitMachine = () => {
                 <ReelsOverlay />
                 <WinLine />
             </FruitMachineContainer>
+            
             <ButtonsContainer>
+            <HoldButtonContainer>
+                {holdButtons.map(holdButton=><HoldButton isActive={holdButtonsActive} isPushed={holdButton.isPushed} key={holdButton.id}>HOLD</HoldButton>)}
+            </HoldButtonContainer>
             <SpinButton
                 onClick={spinWheelsButton}
                 isActive={!spinWheels}
