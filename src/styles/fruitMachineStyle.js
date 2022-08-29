@@ -1,6 +1,19 @@
 import styled, { css, keyframes } from "styled-components"
 
 
+const buttonGlow = () => keyframes`
+    0% {
+        opacity:.7;
+    }
+    50% {
+        opacity:1;
+    }
+    100% { 
+        opacity:.7;
+    }
+
+`
+
 const wheelAnimate = ({wheelMovementStart, wheelMovementEnd}) => keyframes`
     0% {
         transform:translate(0,${wheelMovementStart}%);
@@ -76,6 +89,10 @@ const winAnimateWrapper = () => css`
     animation: ${winAnimate()} .5s ease-in-out forwards;
 `
 
+const buttonGlowWrapper = () => css`
+    animation: ${buttonGlow()} 1s linear forwards infinite;
+`
+
 export const WheelOuter = styled.div`
     background:white;
     width:${props=> props.wheelSize}px;
@@ -102,6 +119,7 @@ export const SpinButton = styled.button`
     border:none;
     background: ${props=>props.isActive ? `rgba(255,198,23,1)` : `rgba(255,198,23,.3)`};
     color:${props=>props.isActive ? `white` : `rgba(255,255,255,.5)`};
+    ${props=>props.isActive ?  buttonGlowWrapper() : `animation:none;`} 
     font-family: 'DM Mono';
     font-size:20px;
     padding:20px 35px;
