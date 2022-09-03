@@ -123,6 +123,12 @@ const FruitMachine = () => {
                 randomNumber(0,20),
                 randomNumber(0,20)
             ]
+            const holdCheck = randArrayStart.map((wheel, index)=>{
+                if (holdButtons[index].isPushed ) {
+                    return 0
+                }
+                return wheel
+            })
             const randArrayEnd=[
                 randArrayStart[0]+60,
                 randArrayStart[1]+60,
@@ -233,6 +239,7 @@ const FruitMachine = () => {
                         fruitWheel={wheel.fruit} 
                         wheelRatio={wheelRatio}
                         wheelSize={wheelSize}
+                        isHeld={true}
                         />
                     ))
                 }

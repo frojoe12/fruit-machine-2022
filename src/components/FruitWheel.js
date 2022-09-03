@@ -3,7 +3,7 @@ import FruitPart from "./FruitPart"
 import { WheelOuter } from "../styles/fruitMachineStyle"
 
 
-const FruitWheel = ({fruitWheel, wheelMovementStart, wheelMovementEnd, wheelMove, wheelSpeed, wheelRatio, wheelSize}) => {
+const FruitWheel = ({fruitWheel, wheelMovementStart, wheelMovementEnd, wheelMove, wheelSpeed, wheelRatio, wheelSize, isHeld}) => {
     return (
         <WheelOuter 
             wheelMovementStart={wheelMovementStart}
